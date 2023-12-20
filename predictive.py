@@ -5,6 +5,7 @@ import numpy as np
 #automatic prediction
 from pmdarima.arima import auto_arima 
 from math import sqrt
+from sklearn.metrics import mean_squared_error
 # importing a package for Dickey fuller's formular from stat module
 from statsmodels.tsa.stattools import adfuller
 from statsmodels.tsa.seasonal import seasonal_decompose
@@ -164,4 +165,9 @@ plt.xlabel('Year-Month')
 plt.show()
 print(forecast)
 
+#Root mean squared error
 # calculate the root mean squared error(shows you how accurate or how far off the prediction is)
+
+rms = sqrt(mean_squared_error(test,forecast))
+print('RMSE:', rms)
+#if the rms value is below 60, this means its a big error gap.
